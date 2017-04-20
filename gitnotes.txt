@@ -55,3 +55,27 @@ git push
 The above steps are to be followed to rebase from any branch to master branch
 #if the conflict involves other developers code then rebase has to be done with that dev help
 ============
+suppose we have two repositories r1 and r2
+we clone r1
+git clone https://r1
+and add a file aa.txt,commit and push 
+and then
+git remote set-url origin git@github.com:naveen882/gittest.git
+git pull origin master #gets all contents from the newrepository gittest
+the git add,git commit and git push
+now the aa.txt is pushed to gittest repository
+============
+if there is new git init made and want to add the file to remote repository then the following steps have to be taken
+mkdir resp1
+cd resp1
+git init
+touch newfile.txt
+git add newfile.txt #git commit -m "newfile.txt" 
+git remote add myorigin git@github.com:naveen882/gittest.git
+git fetch myorigin master
+git branch
+git checkout myorigin/master #this will be the new remote branch woth all the remote files in it
+git checkout master
+git merge myorigin/master #your files will me merged with the mreote branch files in the master repository
+git push or git push --set-upstream origin master #For doing git push you may have to add again,git remote add origin git@github.com:naveen882/gittest.git and then do the follwing command 
+git push --set-upstream origin master #this will push all the files to remote repository
