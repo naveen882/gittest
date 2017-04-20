@@ -79,3 +79,5 @@ git checkout master
 git merge myorigin/master #your files will me merged with the mreote branch files in the master repository
 git push or git push --set-upstream origin master #For doing git push you may have to add again,git remote add origin git@github.com:naveen882/gittest.git and then do the follwing command 
 git push --set-upstream origin master #this will push all the files to remote repository
+============
+git remote -v #shows all the remote git repositories added
