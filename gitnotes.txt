@@ -1,0 +1,57 @@
+git status
+git show #shows information about the current commit
+git blame #shows all the users information who has made the changes on that line
+ex:
+b85aef0a (naveen               2016-04-05 16:46:47 +0530  72)   try:
+a78ba414 (naveen               2017-04-10 16:56:36 +0530  73)           #response_dict = {'status':0,'msg':'Success'}
+b85aef0a (naveen               2016-04-05 16:46:47 +0530  74)           status = 0
+a78ba414 (naveen               2017-04-10 16:56:36 +0530  75)                 return HttpResponseRedirect('/reports/wce/')
+b85aef0a (naveen               2016-04-05 16:46:47 +0530  76)           qd = get_request_type(request)
+In the above example 2017-04-10 was changed recently
+
+Cherry pick
+When a feture is checked in one branch and the same has to be copied to another branch then we use cherry pick
+For example: Master has a file cheked in with commit id 0e0ece6e85342e3d727a8979649d0995c3073cd6 which has to be copied to another branch called feature then following are the steps to do it
+1.git checkout master
+2.git show #get commit id
+3.git checkout feature #feature branch
+4.git cheery-pick 0e0ece #only six characters is enough as git is smart enough to understand this and the changes will be in your feature branch
+
+
+How to remove the top most commit from my branch on master
+1.git checkout master
+2.git reset --hard HEAD^  # HEAD^  means head -1 and HEAD^^ meand head -2 and HEAD^^^ means head -3 and so on.....
+
+git clean -f will remove untracked files, meaning they're gone for good since they aren't in GitHub. Make sure you really want to remove all untracked files before doing this.
+
+Deleting a branch
+git branch -d practice1
+
+============
+After doing a commint on master branch if there any more commits to be done which u had forgotten then use the following
+git add missingfile.txt
+git commit --amend
+then do again 
+git add somefiles.txt #so that missingfile.txt and somefiles.txt are int he same commit
+
+============
+git branch #lists the branch you are on
+git brach -b practice  #makes a new branch from the current branch and switches to that branch
+git log #shows all the commits made
+============
+#REBASE
+git checkout master
+git checkout -b newbranch #to checkout new branch from master and to switch -b
+create file a.txt
+git add a.txt
+git commit -m "adding a.txt"
+git rebase -i master
+add comment or combine the comments using squash s
+#if there is a conflict ,open the conflict file resolve the conflict then do git add, git commit and the below
+git rebase --continue #on successfull message like Successfully rebased and updated refs/heads/newbranch.
+git checkout master
+git merge newbranch
+git push
+The above steps are to be followed to rebase from any branch to master branch
+#if the conflict involves other developers code then rebase has to be done with that dev help
+============
